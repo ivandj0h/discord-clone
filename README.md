@@ -40,3 +40,10 @@ Find our React documentation here:
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## credits
+
+- [NextJS](https://nextjs.org)
+- [TailwindCSS](https://tailwindcss.com)
+- [Stream](https://getstream.io)
+- [ivandjoh](https://ivandjoh.com/)
