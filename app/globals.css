@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '~stream-chat-react/dist/css/v2/index.css';
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --discord-purple: #7289da;
+  --dark-discord: #4752c4;
+
+  --gray-normal: #313338;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+.str-chat {
+  --str-chat__message-list-background-color: white;
+  --str-chat__spacing-10: 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 5rem auto 1fr;
+}
+
+::backdrop {
+  background-image: linear-gradient(-45deg, #7289da, rebeccapurple);
+  opacity: 0.5;
+}
+
+.labelTitle {
+  @apply uppercase text-sm font-bold text-gray-600;
+}
+
+input,
+select {
+  @apply w-full p-2 rounded;
+}
+
+input[type='text'] {
+  @apply bg-transparent outline-transparent;
+}
+
+input[type='text']:focus {
+  outline: none;
+}
+
+input[type='radio'] {
+  @apply w-8 h-8 mb-0;
+  accent-color: black;
+}
+
+.rounded-icon {
+  @apply transition-all ease-in-out duration-200 aspect-square object-cover;
+  border-radius: 50%;
+}
+
+.rounded-icon:hover {
+  border-radius: 1rem;
+}
+
+.sidebar-icon {
+  @apply flex items-center justify-center w-full relative transition-all ease-in-out duration-200;
+}
+
+.sidebar-icon::before {
+  @apply transition-all duration-200 ease-in-out;
+  --content-height: 0rem;
+  --content-width: 0rem;
+  --offset: -0.4rem;
+  content: '';
+  display: block;
+  height: var(--content-height);
+  width: var(--content-width);
+  background: black;
+  position: absolute;
+  border-radius: 3px;
+  left: var(--offset);
+}
+
+.sidebar-icon:hover::before {
+  --content-height: 1.25rem;
+  --content-width: 0.5rem;
+  --offset: -0.15rem;
+}
+
+.selected-icon::before {
+  --content-height: 2rem;
+  --content-width: 0.5rem;
+  --offset: -0.15rem;
+}
+
+.discord-icon {
+  @apply bg-white p-3 w-full h-full;
+  content: '';
+
+  background: url('../assets/discord-black.svg') no-repeat center center, white;
+  background-origin: content-box;
+}
+
+.discord-icon:hover {
+  background: url('../assets/discord-white.svg') no-repeat center center,
+    var(--discord-purple);
+  background-origin: content-box;
+  --offset: 1.5rem;
+}
+
+.online-icon::after {
+  @apply block absolute h-4 w-4 bg-green-600 bottom-0 right-0 rounded-full border-2 border-gray-200;
+  content: '';
+}
+
+.inactive-icon::after {
+  @apply block absolute h-full w-0.5 bg-red-400 rotate-45 rounded-xl m-2;
+  content: '';
+}
+
+.channel-container {
+  @apply relative;
+}
+
+.channel-container::before {
+  @apply block absolute h-2 w-3 -left-4 bg-gray-700 rounded-xl;
+  content: '';
+}
